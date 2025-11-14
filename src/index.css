@@ -1,8 +1,21 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+@import "tailwindcss";
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body * {
+  font-size: 15px;
+}
+
+body {
+  cursor: default;
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.custom-font {
+  font-family: "Mona Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.custom-shadow {
+  box-shadow: 0px 0px 10px 0px #dddddd;
 }

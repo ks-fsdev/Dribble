@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <>
-      <h1>this is a footer</h1>
+      <h1 className="text-4xl">this is a footer</h1>
     </>
   );
 }
