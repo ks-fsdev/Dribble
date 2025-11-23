@@ -1,22 +1,50 @@
-import SearchBar from "./SearchBar";
-import Navbar from "./Navbar";
 import TopBtns from "./TopBtns";
-import { useEffect, useState } from "react";
+import Navbar from "./Navbar";
+import SearchBar from "./SearchBar";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import Menu from "./Menu";
 
-function Header() {
-  let [scrolled, setScrolled] = useState(false);
-
+function HomeHead() {
+  let [menuOpen, setMenuOpen] = useState(false);
+  const menuHandler = () => {
+    setMenuOpen((prev) => !prev);
+  };
   return (
     <>
-      <div className="w-screen flex justify-between items-center py-2 px-4 lg:py-5 lg:px-10">
-        <div className="flex lg:w-[70%] w-[60%] md:w-[75%] gap-15 items-center justify-between">
-          <div className="flex justify-start sm:justify-between items-center gap-5 lg:gap-10 xl:w-[52%] lg:w-[75%] sm:w-[80%]">
-            <div className="flex gap-2 md:gap-5 items-center">
-              <div className="w-8 h-5.5 flex xl:hidden flex-col justify-between cursor-pointer">
-                <div className="h-1 w-[90%] rounded-full bg-black"></div>
-                <div className="h-1 w-[60%] rounded-full bg-black"></div>
-                <div className="h-1 w-[40%] rounded-full bg-black"></div>
-              </div>
+      <div
+        className={
+          menuOpen
+            ? "w-screen bg-white flex justify-between border-b border-neutral-200 items-center py-2 px-4 lg:py-5 lg:px-10 transition-all duration-300 ease-in-out"
+            : "w-screen bg-white flex justify-between border-0 border-neutral-200 items-center py-2 px-4 lg:py-5 lg:px-10 transition-all duration-300 ease-in-out"
+        }>
+        <div className="flex lg:w-[80%] w-[60%] md:w-[75%] gap-5 xl:gap-15 items-center justify-start ">
+          <div
+            className="gap-5 flex items-center justify-start"
+            onClick={menuHandler}>
+            <div className="relative w-8 h-5.5 flex xl:hidden flex-col justify-between cursor-pointer">
+              <div
+                className={
+                  menuOpen
+                    ? "h-1 w-[90%] rounded-full bg-black rotate-45 transition-all duration-300 ease-in-out absolute top-[9px]"
+                    : "h-1 w-[90%] rounded-full bg-black transition-all duration-300 ease-in-out"
+                }></div>
+              <div
+                className={
+                  menuOpen
+                    ? "h-1 w-[60%] rounded-full bg-black absolute top-2 left-0 opacity-0 transition-all duration-300 ease-in-out"
+                    : "h-1 w-[60%] rounded-full bg-black absolute top-2 left-0 opacity-100 transition-all duration-300 ease-in-out"
+                }></div>
+
+              <div
+                className={
+                  menuOpen
+                    ? "h-1 w-[90%] rounded-full bg-black -rotate-45 transition-all duration-300 ease-in-out absolute top-[9px]"
+                    : "h-1 w-[40%] rounded-full bg-black transition-all duration-300 ease-in-out"
+                }></div>
+            </div>
+
+            <Link to="/" className="cursor-pointer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="94"
@@ -31,19 +59,21 @@ function Header() {
                   clip-rule="evenodd"
                 />
               </svg>
-            </div>
-
-            <div className="">
-              <SearchBar search="What are you looking for?" />
-            </div>
+            </Link>
           </div>
+
+          {/* <Menu menuStatus={menuOpen} className={menuOpen ? "block" : "none"} /> */}
+
+          <div className="w-[50%] xl:w-[30%]  hidden md:flex">
+            <SearchBar search="What are you looking for?" />
+          </div>
+
           <Navbar />
         </div>
-
         <TopBtns />
       </div>
     </>
   );
 }
 
-export default Header;
+export default HomeHead;

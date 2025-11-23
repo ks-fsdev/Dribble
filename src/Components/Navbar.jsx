@@ -6,7 +6,7 @@ function Navbar() {
   let [hiredOpen, hiredOpenHandler] = useState(false);
   return (
     <>
-      <div className="text-sm flex items-center gap-8">
+      <div className="hidden xl:flex text-sm items-center gap-8">
         <div
           className="relative"
           onMouseEnter={() => exporeOpenHandler(true)}
